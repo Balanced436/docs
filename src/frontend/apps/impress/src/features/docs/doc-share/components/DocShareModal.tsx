@@ -37,6 +37,7 @@ import {
 } from './DocShareInvitation';
 import { QuickSearchGroupMember } from './DocShareMember';
 import { DocShareModalFooter } from './DocShareModalFooter';
+import { Role } from '@/docs/doc-management';
 
 const ShareModalStyle = createGlobalStyle`
   .--docs--doc-share-modal [cmdk-item] {
@@ -270,6 +271,7 @@ export const DocShareModal = ({ doc, onClose, isRootDoc = true }: Props) => {
                     )}
                   </Text>
                   <ButtonAccessRequest
+                    role={Role.EDITOR}
                     docId={doc.id}
                     variant="secondary"
                     size="small"

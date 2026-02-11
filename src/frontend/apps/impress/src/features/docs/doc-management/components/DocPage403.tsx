@@ -10,6 +10,7 @@ import { Box, Icon, Loading, StyledLink, Text } from '@/components';
 import { ButtonAccessRequest } from '@/docs/doc-share';
 import { useDocAccessRequests } from '@/docs/doc-share/api/useDocAccessRequest';
 import { useSkeletonStore } from '@/features/skeletons';
+import { Role } from '@/docs/doc-management';
 
 const StyledButton = styled(Button)`
   width: fit-content;
@@ -107,7 +108,7 @@ export const DocPage403 = ({ id }: DocProps) => {
               </StyledButton>
             </StyledLink>
             {docAccessError?.status !== 404 && (
-              <ButtonAccessRequest docId={id} />
+              <ButtonAccessRequest role={Role.READER} docId={id} />
             )}
           </Box>
         </Box>
