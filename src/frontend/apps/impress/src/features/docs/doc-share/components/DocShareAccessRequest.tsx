@@ -18,7 +18,7 @@ import {
 } from '@/components';
 import { QuickSearchData, QuickSearchGroup } from '@/components/quick-search';
 import { useCunninghamTheme } from '@/cunningham';
-import { AccessRequest, Doc } from '@/docs/doc-management/';
+import { AccessRequest, Doc, Role } from '@/docs/doc-management/';
 import { useAuth } from '@/features/auth';
 
 import {
@@ -167,10 +167,12 @@ export const QuickSearchGroupAccessRequest = ({
 
 type ButtonAccessRequestProps = {
   docId: Doc['id'];
+  role: Role,
 } & ButtonProps;
 
 export const ButtonAccessRequest = ({
   docId,
+  role,
   ...buttonProps
 }: ButtonAccessRequestProps) => {
   const { authenticated } = useAuth();
@@ -216,7 +218,7 @@ export const ButtonAccessRequest = ({
 
   return (
     <Button
-      onClick={() => createRequest({ docId })}
+      onClick={() => createRequest({ docId, role })}
       disabled={hasRequested}
       {...buttonProps}
     >
